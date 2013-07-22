@@ -1,13 +1,13 @@
 #!/bin/sh
 
-tmpdir="/tmp/$$-tiff-compression/ratio"
+tmpdir="/tmp/$$-tiff-compression-ratio"
 mkdir "$tmpdir"
 
 for i in "$@"; do
     tiffcp -c none "$i" "$tmpdir/$i"
     fullsize="$(stat -c '%s' "$tmpdir/$i")"
     compsize="$(stat -c '%s' "$i")"
-    let reducedby=fullsize-compsize
-    let compratio=reducedby/fullsize*100
+    let reducedby='fullsize-compsize'
+    let compratio='reducedby*100/fullsize'
     printf '%d%%: %s' $compratio "$i"
 done
