@@ -9,5 +9,5 @@ for i in "$@"; do
     compsize="$(stat -c '%s' "$i")"
     let reducedby='fullsize-compsize'
     let compratio='reducedby*1000/fullsize'
-    printf '%d‰: %s\n' $compratio "$i"
+    printf '%03d‰: %s\n' $compratio "$i"
 done
