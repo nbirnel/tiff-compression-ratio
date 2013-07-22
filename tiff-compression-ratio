@@ -8,6 +8,6 @@ for i in "$@"; do
     fullsize="$(stat -c '%s' "$tmpdir/$i")"
     compsize="$(stat -c '%s' "$i")"
     let reducedby='fullsize-compsize'
-    let compratio='reducedby*100/fullsize'
-    printf '%d%%: %s\n' $compratio "$i"
+    let compratio='reducedby*1000/fullsize'
+    printf '%d‰: %s\n' $compratio "$i"
 done
